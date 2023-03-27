@@ -6,17 +6,6 @@ import BasvuruFormu from "./component/BasvuruFormu";
 import BasvuruGoruntule from "./component/BasvuruGoruntule";
 
 function Portal() {
-
-    const formTikla = () => {
-        ReactDOM.render(<BasvuruFormu />, document.getElementById("icerikDiv"));
-    }
-
-    const goruntuleTikla = () => {
-        ReactDOM.render(<BasvuruGoruntule />, document.getElementById("icerikDiv"));
-    }
-
-
-
     return (
 <>
         <div className="row">
@@ -32,14 +21,14 @@ function Portal() {
                         <li className="nav-item">
                             <Link className="nav-link active" 
                                     aria-current="page" 
-                                    onClick={formTikla}
+                                    to="/BasvuruFormu"
                                     >
                                         Başvuru Formu</Link>
                         </li>
                         <li>
                             <Link className="nav-link" 
                                     aria-current="page" 
-                                    onClick={goruntuleTikla}
+                                    to="/BasvuruGoruntule"
                                     >
                                         Başvuru Görüntüle</Link>
                         </li>
@@ -61,8 +50,11 @@ function Portal() {
                 </div>
                 {/*SIDEBAR END*/}
             </div>
-            <div className="col-8" id="icerikDiv">
-
+            <div className="col-8">
+                <Routes>
+                    <Route path="/BasvuruFormu" element={<BasvuruFormu/>} />
+                    <Route path="/BasvuruGoruntule" element={<BasvuruGoruntule/>} />
+                </Routes>
             </div>
         </div>
         

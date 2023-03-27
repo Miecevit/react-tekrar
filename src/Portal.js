@@ -8,11 +8,15 @@ import BasvuruGoruntule from "./component/BasvuruGoruntule";
 function Portal() {
 
     const formTikla = () => {
-        ReactDOM.render(<BasvuruFormu />, document.getElementById("icerikDiv"));
+        ReactDOM.render(<BasvuruFormu />, document.getElementById("sol"));
+        document.getElementById("sol").style.display = "block";
+        document.getElementById("sag").style.display = "none";
     }
 
     const goruntuleTikla = () => {
-        ReactDOM.render(<BasvuruGoruntule />, document.getElementById("icerikDiv"));
+        ReactDOM.render(<BasvuruGoruntule />, document.getElementById("sag"));
+        document.getElementById("sag").style.display = "block";
+        document.getElementById("sol").style.display = "none";
     }
 
 
@@ -62,6 +66,15 @@ function Portal() {
                 {/*SIDEBAR END*/}
             </div>
             <div className="col-8" id="icerikDiv">
+
+                <div className="row">
+                    <div className="col-6" id="sol" style={{display:"none"}}>
+
+                    </div>
+                    <div className="col-6" id="sag" style={{display:"none"}}>
+
+                    </div>
+                </div>
 
             </div>
         </div>

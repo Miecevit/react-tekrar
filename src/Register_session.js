@@ -9,7 +9,7 @@ function Register() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-   const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         if(password != passRepeat){
@@ -17,38 +17,14 @@ function Register() {
             return;
         }
 
+        sessionStorage.setItem('email', email);
+        sessionStorage.setItem('password', password);
 
-        try{
-
-            const response = await fetch('http://localhost:3000/kayit', {
-                method: 'POST',
-                headers: {'Content-type':'application/json'
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
-            });
-
-            if(response.status === 200){
-                setSuccess('Kayit Basarili. Simdi giris yapabilirsiniz.');
-                setEmail('');
-                setPassword('');
-                setPassRepeat('');
-                setError('');
-            }else{
-                setError('Kayit olusturulurken bir hata olustu.');
-            }
-
-
-        }catch (err){
-            setError('Kayit olusturulurken bir hata olustu.');
-        }
-
-
-        
-        
-        
+        setEmail('');
+        setPassword('');
+        setPassRepeat('');
+        setSuccess('Kayit Olusturuldu. Giris yapabilirsiniz.');
+        setError('');
     }
 
     return (

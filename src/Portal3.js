@@ -1,14 +1,28 @@
 import React from 'react';
-import {Router, Route, Routes, Link} from 'react-router-dom';
+import {Route, Routes, Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 
 import BasvuruFormu from "./component/BasvuruFormu";
 import BasvuruGoruntule from "./component/BasvuruGoruntule";
 
 function Portal() {
+
+    const formTikla = () => {
+        ReactDOM.render(<BasvuruFormu />, document.getElementById("sol"));
+        document.getElementById("sol").style.display = "block";
+        document.getElementById("sag").style.display = "none";
+    }
+
+    const goruntuleTikla = () => {
+        ReactDOM.render(<BasvuruGoruntule />, document.getElementById("sag"));
+        document.getElementById("sag").style.display = "block";
+        document.getElementById("sol").style.display = "none";
+    }
+
+
+
     return (
 <>
-       
         <div className="row">
             <div className="col-4">
                 {/*SIDEBAR*/}
@@ -22,14 +36,14 @@ function Portal() {
                         <li className="nav-item">
                             <Link className="nav-link active" 
                                     aria-current="page" 
-                                    to="/BasvuruFormu"
+                                    onClick={formTikla}
                                     >
                                         Başvuru Formu</Link>
                         </li>
                         <li>
                             <Link className="nav-link" 
                                     aria-current="page" 
-                                    to="/BasvuruGoruntule"
+                                    onClick={goruntuleTikla}
                                     >
                                         Başvuru Görüntüle</Link>
                         </li>
@@ -51,12 +65,16 @@ function Portal() {
                 </div>
                 {/*SIDEBAR END*/}
             </div>
-            <div className="col-8">
-               
-                <Routes>
-                    <Route path="/BasvuruFormu" element={<BasvuruFormu/>} />
-                    <Route path="/BasvuruGoruntule" element={<BasvuruGoruntule/>} />
-                </Routes>
+            <div className="col-8" id="icerikDiv">
+
+                <div className="row">
+                    <div className="col-6" id="sol" style={{display:"none"}}>
+
+                    </div>
+                    <div className="col-6" id="sag" style={{display:"none"}}>
+
+                    </div>
+                </div>
 
             </div>
         </div>

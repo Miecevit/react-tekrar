@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 
 function Register() {
 
@@ -21,9 +20,14 @@ function Register() {
 
         try{
 
-            const response = await axios.post('http://localhost:3001/kayit', {
+            const response = await fetch('http://localhost:3001/kayit', {
+                method: 'POST',
+                headers: {'Content-type':'application/json'
+                },
+                body: JSON.stringify({
                     email,
-                    password
+                    password,
+                }),
             });
 
             if(response.status === 200){

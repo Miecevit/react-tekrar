@@ -1,40 +1,25 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 
-import axios from 'axios';
-
-function Login() {
+function Login_s() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        try{
+        const kullanici_adi = sessionStorage.getItem('email');
+        const sifre = sessionStorage.getItem('password');
 
-            const response = await axios.post('http://localhost:3001/',
-                {
-                    email,
-                    password
-                }
-            );
+        if(email == kullanici_adi && password == sifre){
 
-            if(response.status === 200){
-                if(response.data.message === "1"){
-                    setSuccess('Giriş Başarili. Yonlendiriliyorsunuz...')
-                    setTimeout( () => {
-                    navigate('/portal');
-                }, 2000);  
-                }else{
-                setError('Kullanici adi veya sifre hatali.');
-                }
-            }
-        }catch(err){
-            setError('Kullanici adi ve sifre kontrolünde hata olustu.');
+            navigate('/portal');
+        }
+        else{
+            setError('Hatali kullanici adi veya sifre!');
         }
 
 
@@ -59,7 +44,6 @@ function Login() {
             </form>
 
             {error && <p style={{color:'red'}}> {error} </p> }
-            {success && <p style={{color: 'green'}}>{success}</p>}
 
             <p>
                 Hesabınız yok mu? <Link to="/kayit">Kayıt Ol!</Link>
@@ -68,4 +52,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Login_s;

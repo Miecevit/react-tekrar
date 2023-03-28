@@ -3,6 +3,9 @@ import Login from './Login.js';
 import Register from './Register.js';
 import Portal from './Portal.js';
 
+import BasvuruFormu from "./component/BasvuruFormu";
+import BasvuruGoruntule from "./component/BasvuruGoruntule";
+
 function App() {
   return (
     <Router>

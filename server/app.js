@@ -41,6 +41,31 @@ app.post('/kayit', (req,res) => {
     
 });
 
+app.post('/', (req,res) => {
+
+    const {email, password} = req.body;
+
+    const query = "SELECT * FROM user WHERE username=? AND password=?";
+
+    connection.query(query, [email, password], (err, result) => {
+        if(err){
+            console.error("Bilgilerin kontrolunde hata olustu. ", err);
+            res.status(500).send({error: 'Bilgilerin kontrolunde hata olustu.'});
+            return;
+        }
+        if(result.length > 0){
+            res.status(200).send({message: '1'});
+        }else{
+            res.status(200).send({message: '0'});
+        }
+        
+
+    })
+
+
+
+})
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {

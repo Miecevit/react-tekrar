@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
-function Register() {
+function Registerf() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -83,4 +83,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default Registerf;

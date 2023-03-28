@@ -7,13 +7,13 @@ import BasvuruGoruntule from "./component/BasvuruGoruntule";
 
 function Portal() {
     return (
-<>
+
        
         <div className="row">
             <div className="col-4">
                 {/*SIDEBAR*/}
                 <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style={{width: "280px"}}>
-                    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <a href="/portal" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 
                     <span className="fs-4">Sidebar</span>
                     </a>
@@ -22,14 +22,14 @@ function Portal() {
                         <li className="nav-item">
                             <Link className="nav-link active" 
                                     aria-current="page" 
-                                    to="/BasvuruFormu"
+                                    to="BasvuruFormu"
                                     >
                                         Başvuru Formu</Link>
                         </li>
                         <li>
                             <Link className="nav-link" 
                                     aria-current="page" 
-                                    to="/BasvuruGoruntule"
+                                    to="BasvuruGoruntule"
                                     >
                                         Başvuru Görüntüle</Link>
                         </li>
@@ -54,14 +54,14 @@ function Portal() {
             <div className="col-8">
                
                 <Routes>
-                    <Route path="/BasvuruFormu" element={<BasvuruFormu/>} />
-                    <Route path="/BasvuruGoruntule" element={<BasvuruGoruntule/>} />
+                    <Route path="BasvuruFormu" element={<BasvuruFormu/>} />
+                    <Route path="BasvuruGoruntule" element={<BasvuruGoruntule/>} />
                 </Routes>
 
             </div>
         </div>
         
-</>
+
     );
 }
 

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import BasvuruFormu from "./component/BasvuruFormu";
 import BasvuruGoruntule from "./component/BasvuruGoruntule";
 
-function Portal() {
+function Portal3() {
 
     const formTikla = () => {
         ReactDOM.render(<BasvuruFormu />, document.getElementById("sol"));
@@ -83,4 +83,4 @@ function Portal() {
     );
 }
 
-export default Portal;
+export default Portal3;

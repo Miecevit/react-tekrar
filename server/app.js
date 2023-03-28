@@ -65,7 +65,7 @@ app.post('/', (req,res) => {
                 }
             });
 
-            res.status(200).send({message: '1'});
+            res.status(200).send({message: '1', id: user_id});
         }else{
             res.status(200).send({message: '0'});
         }
@@ -75,7 +75,26 @@ app.post('/', (req,res) => {
 
 
 
-})
+});
+
+
+app.post('/signout', (req,res) => {
+
+        const {id} = req.body;
+
+        const query = "UPDATE user SET isLogin = 0 WHERE id_num=?";
+
+        connection.query(query, [id], (err,result) => {
+            if(err){
+                console.error("isLogin guncellemesinde hata olustu. ", err);
+                res.status(500).send({error: 'isLogin guncellemesinde hata olustu.'});
+                return;
+            }
+            
+            res.status(200).send({message: 'Kullanici cikisi guncellendi.'});
+        });
+
+});
 
 const PORT = process.env.PORT || 3001;
 

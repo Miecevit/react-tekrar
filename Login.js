@@ -25,6 +25,7 @@ function Login() {
 
             if(response.status === 200){
                 if(response.data.message === "1"){
+                    sessionStorage.setItem("id", response.data.id);
                     setSuccess('Giriş Başarili. Yonlendiriliyorsunuz...')
                     setTimeout( () => {
                     navigate('/portal');

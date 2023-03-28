@@ -1,7 +1,19 @@
+import Sidebar from './Sidebar.js';
+
 function BasvuruGoruntule(){
 
     return(
-        <h1>BURADA BASVURU GORUNTULEME EKRANI VAR!</h1>
+        <div className="row">
+            <div className="col-4">
+                <Sidebar 
+                    gor_active="active" 
+                    gor_disable="disabled"
+                    form_to="/portal/BasvuruFormu"/>
+            </div>
+            <div className="col-8">
+                <h1>BURADA GORUNTULEME ICERIGI VAR!</h1>
+            </div>
+        </div>
     );
 
 }

@@ -13,6 +13,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/kayit" element={<Register />} />
         <Route path="/portal" element={<Portal />} />
+        <Route path="/portal/BasvuruFormu" element={<BasvuruFormu/>} />
+        <Route path="/portal/BasvuruGoruntule" element={<BasvuruGoruntule/>} />
       </Routes>
     </Router>
 

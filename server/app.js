@@ -54,6 +54,17 @@ app.post('/', (req,res) => {
             return;
         }
         if(result.length > 0){
+            const user_id = result[0].id_num;
+
+            const isLoginQuery = "UPDATE user SET isLogin = 1 WHERE id_num=?";
+
+            connection.query(isLoginQuery, user_id, (err,result) => {
+                if(err){
+                    console.error("Login bilgisi guncellenirken hata olustu. ", err);
+                    res.status(500).send({error: 'Login guncellenemedi.'});
+                }
+            });
+
             res.status(200).send({message: '1'});
         }else{
             res.status(200).send({message: '0'});

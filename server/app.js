@@ -96,6 +96,39 @@ app.post('/signout', (req,res) => {
 
 });
 
+app.post('/formGonder', (req,res) => {
+
+    const {id, isim, soyisim, bolum} = req.body;
+
+    const kontrolQuery = "SELECT * FROM basvuru WHERE basvuran_id = ?";
+
+    connection.query(kontrolQuery, [id], (err,result) => {
+
+        if(result.length > 0){
+            res.status(500).send({error: "Aynı hesaptan yalnizca bir basvuru yapilabilir."});
+            return;
+        }else{
+            const query = "INSERT INTO basvuru (basvuran_id, isim, soyisim, bolum) VALUES (?,?,?,?)";
+
+            connection.query(query, [id, isim, soyisim, bolum], (err,result) => {
+                if(err){
+                    console.error("Veritabanina ekleme yapilirken hata olustu. ", err);
+                    res.status(500).send({error: "Veritabanina ekleme yapilirken hata olustu."});
+                    return;
+                }
+
+                res.status(200).send({message: "Basvuru basariyla kaydedildi."});
+            });
+        }
+
+    });
+
+    
+
+})
+
+
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {

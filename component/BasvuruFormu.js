@@ -33,12 +33,12 @@ function BasvuruFormu(){
                 setBolum('');
                 setError('');
             }else{
-                
                 setError(response.data.error);
             }
 
 
         }catch(err){
+            console.log(err);
             setError("Veritabani baglantisinda hata olustu. ", err);
         }
     }

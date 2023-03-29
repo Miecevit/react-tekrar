@@ -105,7 +105,7 @@ app.post('/formGonder', (req,res) => {
     connection.query(kontrolQuery, [id], (err,result) => {
 
         if(result.length > 0){
-            res.status(500).send({error: "Aynı hesaptan yalnizca bir basvuru yapilabilir."});
+            res.status(201).send({error: "Aynı hesaptan yalnizca bir basvuru yapilabilir."});
             return;
         }else{
             const query = "INSERT INTO basvuru (basvuran_id, isim, soyisim, bolum) VALUES (?,?,?,?)";
@@ -123,9 +123,35 @@ app.post('/formGonder', (req,res) => {
 
     });
 
-    
+});
 
-})
+app.post("/formGoster", (req,res) => {
+
+    const user_id = req.body.id;
+
+    const query = "SELECT * FROM basvuru WHERE basvuran_id=?";
+
+    connection.query(query, [user_id], (err,result) => {
+        if(err){
+            console.error("Veritabanindan bilgi alinirken hata olustu.", err);
+            res.status(500).send({error: "Veritabanindan bilgi alinirken hata olustu."});
+            return;
+        }
+        if(result.length===0){
+            res.status(404).send({message: "Basvuru Bulunamadi."});
+        }else{
+            res.status(200).send({isim: result[0].isim, 
+                soyisim: result[0].soyisim, 
+                bolum: result[0].bolum});
+        }
+       
+
+
+    });
+
+
+
+});
 
 
 

@@ -1,7 +1,9 @@
-import {Router, Route, Routes, Link} from 'react-router-dom';
+import {Router, Route, Routes, Link, useNavigate} from 'react-router-dom';
 import SignOut from '../functions/SignOut.js';
 
 function Sidebar(props){
+
+    const navigate = useNavigate();
 
     return(
         <>
@@ -39,7 +41,7 @@ function Sidebar(props){
                         <li><a className="dropdown-item" href="#">Settings</a></li>
                         <li><a className="dropdown-item" href="#">Profile</a></li>
                         <li><hr className="dropdown-divider"/></li>
-                        <li><a className="dropdown-item" href="#" onClick={SignOut}>Sign out</a></li>
+                        <li><a className="dropdown-item" href="#" onClick={() => SignOut(navigate)}>Sign out</a></li>
                     </ul>
                     </div>
                 </div>

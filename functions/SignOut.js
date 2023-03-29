@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
 
-async function SignOut(){
+
+async function SignOut(navigate){
 
     const id = sessionStorage.getItem("id");
-    const Navigate = useNavigate();
+
 
     try{
 
@@ -14,7 +14,7 @@ async function SignOut(){
         );
 
         if(response.status === 200){
-          
+          navigate('/');
         }else{
             alert("Şu an cikisinizi yapamiyoruz.");
         }
